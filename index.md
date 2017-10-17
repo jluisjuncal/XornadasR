@@ -105,5 +105,4 @@ import.io <https://www.import.io/standard-plans/>
 ## Chrome Selector Gadget
 
 --- .código
-## Usando rvest
 

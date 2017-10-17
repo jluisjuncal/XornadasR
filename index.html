@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Web Scraping con R</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Web Scraping con R">
+  <meta name="author" content="J. Luis Juncal">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Web Scraping con R</h1>
+    <h2>Introducción ó Scraping e boas prácticas</h2>
+    <p>J. Luis Juncal<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="inicio" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Web Scraping con R</h2>
+  </hgroup>
+  <article data-timings="">
+    <h1>Cómo obter datos da web</h1>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="segue" id="slide-2" style="background:grey;">
+  <hgroup>
+    <h2>É complicado saber de todo -&gt; Preguntade</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="bases" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Motivacións</h2>
+  </hgroup>
+  <article data-timings="">
+    <h1>Obter datos que non están dispoñibles</h1>
+
+<pre><code>    - De forma cómoda (CSV, fixed format,...)
+    - Independencia de APIs externas
+    - Non están pensados para ser procesados (webs do tempo, estado do tráfico, etc...)
+    - Ter de primeira man os datos reais
+    - Ter un histórico dos cambios nun dataset propio
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="bases" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Obxetivos</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Exemplo: Obter un CSV dado polo cliente (plantilla de Prestashop) a partires de webs de lanas</p>
+
+<h3>Fluxo de traballo</h3>
+
+<ul class = "build incremental">
+<li><p>Necesidades -&gt; Evaluación de alternativas -&gt; Aplicación -&gt; Retorno de experiencia</p></li>
+<li><p>Ficheiro    -&gt; Diversas linguaxes, frameworks, servicios -&gt; Código -&gt; Charla e documentación</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="bases" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>Servicios</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Kimonolabs <a href="http://www.kimonolabs.com/">http://www.kimonolabs.com/</a><br>
+import.io <a href="https://www.import.io/standard-plans/">https://www.import.io/standard-plans/</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="bases" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>Linguaxes e frameworks dispoñibles</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul class = "build incremental">
+<li> Python 
+
+<ul>
+<li>Beautiful Soup</li>
+</ul></li>
+<li> R<br>
+
+<ul>
+<li>Rvest (xml2, Httr)</li>
+<li>RSelenium</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="bases" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>DOM</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="./assets/img/DOM.gif" alt="DOM"></p>
+
+<div class='source'>
+  Fonte: <a href='http://librosweb.es/libro/ajax/capitulo_4.html'>Introduccion a DOM - Maestros del web</a>
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="explicacion" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>CSS Selectors</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>É o xeito máis sinxelo e practico para acceder ós elementos do DOM que queremos utilizar</p>
+
+<div class='source'>
+  Fonte: <a href='http://librosweb.es/libro/ajax/capitulo_4.html'>Introduccion a DOM - Maestros del web</a>
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="explicacion" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>Chrome Selector Gadget</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="código" id="slide-10" style="background:;">
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Web Scraping con R'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='É complicado saber de todo -&gt; Preguntade'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Motivacións'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Obxetivos'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Servicios'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Linguaxes e frameworks dispoñibles'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='DOM'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='CSS Selectors'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Chrome Selector Gadget'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='NA'>
+         10
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

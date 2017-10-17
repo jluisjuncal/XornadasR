@@ -1,0 +1,9 @@
+base
+devtools
+slidify
+shiny
+dplyr
+xml2
+rvest
+data.table
+RColorBrewer
