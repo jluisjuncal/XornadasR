@@ -9,9 +9,11 @@ When you execute code within the notebook, the results appear beneath the code.
 Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
 
 ```{r Carga de librerías, echo=FALSE}
-library(dplyr)
-library(rvest)
-library(readr)
+library(dplyr) # básico, cárgoo  por costume
+library(rvest) # carga automáticamente xml2
+library(readr) # para as operacións con ficheiros
+library(data.table) # só se usa unha vez
+library(stringr) # para as operacións con cadeas
 
 ```
 
@@ -23,7 +25,7 @@ listado_de_productos_prestashop <- read_delim("~/XornadasR/listado de productos 
 
 Scrape katia using ##rvest## utilities
 
-```{r Scraper}
+```{r Scraper inicial}
 # Procesado da páxina principal, é distinta ás páxinas onde estará a información. 
 # Poderiamos coller o campo prezo aquí, máis por sinxeleza e seguridade farémolo todo na mesma función
 
@@ -38,13 +40,22 @@ url%>%html_nodes('#principal .txt_normal .txt_normal')%>%
 tabla_enlaces<-data.table(lanas,enlaces_lanas)
 head(tabla_enlaces)
 ```
+
+
+
 Next, we have to iterate over the table, and scrape the links in it.
-```{r}
+```{r Función Scraper}
 scrape_katia <- function(url_to_scrape) {
         scraped_url <- read_html(url_to_scrape)
         #Codigo de precio funcional
         precio <- scraped_url %>%
         html_nodes("#principal b") %>% html_text()
+        #Codigo do nome
+        nome<-scraped_url%>%
+                html_nodes(".titol_modrev_mini_new")
+        nome<-nome[1]%>%html_text()  # Exemplo de acceso por código, non por CSS Selectors
+        
+        
        # View(precio)
         #fotos<-scraped_url%>%html_nodes("#img_01")%>%html_attr("href")
         ##foto_lana_grande<-scraped_url%>%html_nodes(".zoomWindow")
