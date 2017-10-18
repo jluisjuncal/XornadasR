@@ -52,17 +52,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="segue" id="slide-2" style="background:grey;">
-  <hgroup>
-    <h2>É complicado saber de todo -&gt; Preguntade</h2>
-  </hgroup>
-  <article data-timings="">
-    
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="bases" id="slide-3" style="background:;">
+<slide class="bases" id="slide-2" style="background:;">
   <hgroup>
     <h2>Motivacións</h2>
   </hgroup>
@@ -80,7 +70,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="bases" id="slide-4" style="background:;">
+<slide class="bases" id="slide-3" style="background:;">
   <hgroup>
     <h2>Obxetivos</h2>
   </hgroup>
@@ -98,7 +88,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="bases" id="slide-5" style="background:;">
+<slide class="bases" id="slide-4" style="background:;">
   <hgroup>
     <h2>Servicios</h2>
   </hgroup>
@@ -110,7 +100,7 @@ import.io <a href="https://www.import.io/standard-plans/">https://www.import.io/
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="bases" id="slide-6" style="background:;">
+<slide class="bases" id="slide-5" style="background:;">
   <hgroup>
     <h2>Linguaxes e frameworks dispoñibles</h2>
   </hgroup>
@@ -133,7 +123,7 @@ import.io <a href="https://www.import.io/standard-plans/">https://www.import.io/
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="bases" id="slide-7" style="background:;">
+<slide class="bases" id="slide-6" style="background:;">
   <hgroup>
     <h2>DOM</h2>
   </hgroup>
@@ -148,7 +138,7 @@ import.io <a href="https://www.import.io/standard-plans/">https://www.import.io/
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="explicacion" id="slide-8" style="background:;">
+<slide class="explicacion" id="slide-7" style="background:;">
   <hgroup>
     <h2>CSS Selectors</h2>
   </hgroup>
@@ -156,24 +146,26 @@ import.io <a href="https://www.import.io/standard-plans/">https://www.import.io/
     <p>É o xeito máis sinxelo e practico para acceder ós elementos do DOM que queremos utilizar</p>
 
 <div class='source'>
-  Fonte: <a href='http://librosweb.es/libro/ajax/capitulo_4.html'>Introduccion a DOM - Maestros del web</a>
+  Fonte: <a href='https://www.w3schools.com/cssref/css_selectors.asp'>CSS Selectors - W3C</a>
 </div>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="explicacion" id="slide-9" style="background:;">
+<slide class="explicacion" id="slide-8" style="background:;">
   <hgroup>
     <h2>Chrome Selector Gadget</h2>
   </hgroup>
   <article data-timings="">
-    
+    <p>Axudános a atopar os selectores, aínda que teremos que buscalos nós en moitas ocasións.
+Para iso entramos en modo desenrolo (F12)</p>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="código" id="slide-10" style="background:;">
+<slide class="código" id="slide-9" style="background:;">
   <hgroup>
     <h2>Usando rvest</h2>
   </hgroup>
@@ -181,10 +173,13 @@ import.io <a href="https://www.import.io/standard-plans/">https://www.import.io/
     <pre><code>## Loading required package: xml2
 </code></pre>
 
-<pre><code class="r">url&lt;-read_html(&quot;http://www.katia.com/ES/lanas.html&quot;)
-lanas&lt;-url%&gt;% 
-        html_nodes(&quot;#principal .txt_normal .txt_normal&quot;)%&gt;%
-        html_text()
+<pre><code class="r">url&lt;-read_html(&quot;http://www.katia.com/ES/lanas.html&quot;) # ler só unha vez
+
+lanas&lt;-url%&gt;%  #sempre a mesma estructura 
+        html_nodes(&quot;#principal .txt_normal .txt_normal&quot;)%&gt;% 
+        # 1º procésanse os nodos que queremos, obtidos na web
+        html_text() # aplícase a extracción que queremos
+
 head(lanas)
 </code></pre>
 
@@ -192,10 +187,6 @@ head(lanas)
 ## [3] &quot;AIRE - 5.60 €&quot;                  &quot;ALASKA - 2.99 €&quot;               
 ## [5] &quot;ALPACA SILVER - 4.95 €&quot;         &quot;AMIGURUMI 100% COTTON - 6.50 €&quot;
 </code></pre>
-
-<p>---.código</p>
-
-<h2>Usando rvest,</h2>
 
   </article>
   <!-- Presenter Notes -->
@@ -213,56 +204,50 @@ head(lanas)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='É complicado saber de todo -&gt; Preguntade'>
+        data-slide=2 title='Motivacións'>
          2
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='Motivacións'>
+        data-slide=3 title='Obxetivos'>
          3
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='Obxetivos'>
+        data-slide=4 title='Servicios'>
          4
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='Servicios'>
+        data-slide=5 title='Linguaxes e frameworks dispoñibles'>
          5
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=6 title='Linguaxes e frameworks dispoñibles'>
+        data-slide=6 title='DOM'>
          6
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=7 title='DOM'>
+        data-slide=7 title='CSS Selectors'>
          7
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=8 title='CSS Selectors'>
+        data-slide=8 title='Chrome Selector Gadget'>
          8
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title='Chrome Selector Gadget'>
+        data-slide=9 title='Usando rvest'>
          9
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=10 title='Usando rvest'>
-         10
       </a>
     </li>
   </ul>

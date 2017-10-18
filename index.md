@@ -21,12 +21,6 @@ knit        : slidify::knit2slides
 
 
 
---- .segue bg:grey
-
-
-
-## É complicado saber de todo -> Preguntade
-
 --- .bases
 
 ## Motivacións
@@ -87,6 +81,8 @@ import.io <https://www.import.io/standard-plans/>
 
 
 
+
+
 <div class='source'>
   Fonte: <a href='http://librosweb.es/libro/ajax/capitulo_4.html'>Introduccion a DOM - Maestros del web</a>
 </div>
@@ -97,12 +93,15 @@ import.io <https://www.import.io/standard-plans/>
 É o xeito máis sinxelo e practico para acceder ós elementos do DOM que queremos utilizar
 
 <div class='source'>
-  Fonte: <a href='http://librosweb.es/libro/ajax/capitulo_4.html'>Introduccion a DOM - Maestros del web</a>
+  Fonte: <a href='https://www.w3schools.com/cssref/css_selectors.asp'>CSS Selectors - W3C</a>
 </div>
 
 
 --- .explicacion
 ## Chrome Selector Gadget
+
+Axudános a atopar os selectores, aínda que teremos que buscalos nós en moitas ocasións.
+Para iso entramos en modo desenrolo (F12)
 
 --- .código
 ## Usando rvest
@@ -113,10 +112,13 @@ import.io <https://www.import.io/standard-plans/>
 
 
 ```r
-url<-read_html("http://www.katia.com/ES/lanas.html")
-lanas<-url%>% 
-        html_nodes("#principal .txt_normal .txt_normal")%>%
-        html_text()
+url<-read_html("http://www.katia.com/ES/lanas.html") # ler só unha vez
+
+lanas<-url%>%  #sempre a mesma estructura 
+        html_nodes("#principal .txt_normal .txt_normal")%>% 
+        # 1º procésanse os nodos que queremos, obtidos na web
+        html_text() # aplícase a extracción que queremos
+
 head(lanas)
 ```
 
@@ -125,6 +127,5 @@ head(lanas)
 ## [3] "AIRE - 5.60 €"                  "ALASKA - 2.99 €"               
 ## [5] "ALPACA SILVER - 4.95 €"         "AMIGURUMI 100% COTTON - 6.50 €"
 ```
----.código
 
-## Usando rvest,
+

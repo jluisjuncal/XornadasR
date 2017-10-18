@@ -1,12 +1,11 @@
 ---
 title: "Scrape Katia"
+author      : J. Luis Juncal
+date        : 2017-09-19
 output: html_notebook
 ---
 
-This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. 
-When you execute code within the notebook, the results appear beneath the code. 
 
-Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
 
 ```{r Carga de librerías, echo=FALSE}
 library(dplyr) # básico, cárgoo  por costume
@@ -46,21 +45,41 @@ head(tabla_enlaces)
 Next, we have to iterate over the table, and scrape the links in it.
 ```{r Función Scraper}
 scrape_katia <- function(url_to_scrape) {
-        scraped_url <- read_html(url_to_scrape)
-        #Codigo de precio funcional
+        
+        scraped_url <- read_html(url_to_scrape) # Ler só unha vez, moi importante
+        
+        
+        #Código de precio funcional
+        
         precio <- scraped_url %>%
-        html_nodes("#principal b") %>% html_text()
-        #Codigo do nome
+                html_nodes("#principal b") %>% html_text()
+        
+        #Código do nome funcional
         nome<-scraped_url%>%
                 html_nodes(".titol_modrev_mini_new")
-        nome<-nome[1]%>%html_text()  # Exemplo de acceso por código, non por CSS Selectors
         
+        nome<-nome[1]%>%html_text()%>%
+                str_replace(precio,"")# Exemplo de acceso por código, non por CSS Selectors
         
-       # View(precio)
-        #fotos<-scraped_url%>%html_nodes("#img_01")%>%html_attr("href")
-        ##foto_lana_grande<-scraped_url%>%html_nodes(".zoomWindow")
+        # Código das imaxes funcional
+        # vamos falar dos scripts na páxina
+        # obtemos unha lista de caracteres
+       imaxes<-scraped_url %>%
+        html_nodes("#gal1 .llistatcolors")%>%html_attr("data-image")
+       
+        Sys.sleep(1) # importante, sen isto podería causar un DOS
+      
+      taboa_temp<-data.table(nome,precio,imaxes) # as.data.table(c(nome,precio,imaxes)) daría como resultado un matriz 16x1
+      # taboa_final<<-rbindlist(list(taboa_final,taboa_temp))
+      head(taboa_temp)
+        return(taboa_temp)
+      
+       
 }
 
-lapply(tabla_enlaces$enlaces_lanas[2:5],scrape_katia)
 
+taboa_final<-lapply(tabla_enlaces$enlaces_lanas,scrape_katia) #produce unha lista, executar con coidado que é moi lenta
+taboa_final<-Reduce("rbind",taboa_final) # converte a lista en taboa
+head(taboa_final)
+write.csv2(taboa_final,file = "taboa_final.csv")
 ```
