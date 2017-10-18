@@ -1,0 +1,1 @@
+jQuery(document).ready(function(t){t(".ts-widgets-list-authors-text ul").hide(),t(".ts-widgets-list-authors-name").click(function(){return t(this).parent().find("ul").slideToggle(150),!1})});

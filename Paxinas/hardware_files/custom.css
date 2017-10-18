@@ -1,0 +1,13 @@
+body #siq_search_results .siq_searchForm .siq_searchWrapper .siq_searchTop .siq_searchInner .siq_searchBox{background-color:#FFFFFF;color:#323232}
+body #siq_search_results .srch-poweredbysiq div, body #siq_search_results .srch-poweredbysiq a{color: #AAAAAA}
+body #siq_search_results .search-results-row, body #siq_search_results .search-sponsored-row,#siq_search_results div.siq-prodfacet-contR div.siq-prdrslts-row div.siq-prdrslts-box{background-color:#FFFFFF}
+body #siq_search_results .search-results-R div.search-results-title a, body #siq_search_results .siq-ads h2.srch-sponsored-title a, #siq_search_results div.siq-prodfacet-contR div.siq-prdrslts-row div.siq-prdrslts-box a.siq-prdbx div.siq-prdtls h3{font-size:20px;line-height:24px;color:#000000}
+body #siq_search_results .search-results-R div.sr-R-author{font-size:13px;line-height:15px;color:#959595}
+body #siq_search_results .search-results-R .sr-R-cont div, body #siq_search_results .siq-ads .srch-sponsored-R-cont p{font-size:15px;line-height:18px;color:#323232}
+body #siq_search_results .search-results-R .sr-R-categories ul li{font-size:12px;line-height:14px;color:#323232;background-color:#FFFFFF}
+body #siq_search_results .search-results-R .sr-R-tags ul li{font-size:13px;line-height:15px;color:#7A7A7A}
+body #siq_search_results ._siq_pagination a, body #siq_search_results ._siq_pagination span{font-size:14px;line-height:16px}
+body #siq_search_results ._siq_pagination span.current{background-color:#FFFFFF;color:#323232;border-color:#808080}
+body #siq_search_results ._siq_pagination a{background-color:#FFFFFF;color:#000000;border-color:#DDDDDD}
+body #siq_search_results ._siq_pagination span.disabled{background-color:#F1F1F1;color:#D2D2D2;border-color:#DDDDDD}
+body .navbar-standard span.siq-expsearch-icon{color:#001760 !important}body #menu-item-siq-selectbox,body .siq-icon-item-siq-selectbox{height:31px !important}
