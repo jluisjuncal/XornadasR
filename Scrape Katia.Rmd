@@ -67,7 +67,7 @@ scrape_katia <- function(url_to_scrape) {
        imaxes<-scraped_url %>%
         html_nodes("#gal1 .llistatcolors")%>%html_attr("data-image")
        
-        Sys.sleep(1) # importante, sen isto podería causar un DOS
+        Sys.sleep(0.1) # importante, sen isto podería causar un DOS
       
       taboa_temp<-data.table(nome,precio,imaxes) # as.data.table(c(nome,precio,imaxes)) daría como resultado un matriz 16x1
       # taboa_final<<-rbindlist(list(taboa_final,taboa_temp))
@@ -79,7 +79,7 @@ scrape_katia <- function(url_to_scrape) {
 
 
 taboa_final<-lapply(tabla_enlaces$enlaces_lanas,scrape_katia) #produce unha lista, executar con coidado que é moi lenta
-taboa_final<-Reduce("rbind",taboa_final) # converte a lista en taboa
+taboa_ultima<-do.call("rbind",taboa_final) # converte a lista en taboa
 head(taboa_final)
 write.csv2(taboa_final,file = "taboa_final.csv")
 ```
