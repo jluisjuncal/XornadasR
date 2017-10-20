@@ -1,0 +1,13 @@
+### Readme
+========================================================
+
+Código e presentación utilizado nas **Xornadas R 2017**.
+
+A presentación está feita con [Slidify](http://slidify.org)
+
+Instalar as dependencias, se se quere recrear a presentación
+```{r}
+require(devtools)
+install_github("ramnathv/slidify")
+install_github("ramnathv/slidifyLibraries")
+```
