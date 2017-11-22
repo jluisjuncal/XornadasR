@@ -1,0 +1,44 @@
+---
+title: "Scrape Peregrino"
+output: html_notebook
+---
+
+
+```{r echo=FALSE}
+library(tidyverse)
+library(rvest)
+```
+
+
+
+```{r}
+url<-"https://oficinadelperegrino.com/estadisticas/"
+ano_proba<-"2011"
+mes_proba<-"Enero"
+submit_button<-"Ver Estadísticas" 
+peregrino_sesion<-html_session(url) ## como vamos a rechear formularios, hai que traballar con sesións
+
+peregrino_form <-peregrino_sesion%>% html_form() %>%. [[1]]%>%## leemos os formularios da páxina e seleccionamos o que nos interesa
+        set_values( anno = ano_proba, mes =mes_proba) ## recheamos o formulario co ano e mes que necesitamos
+
+
+sesion_resposta<-with_verbose(submit_form(peregrino_sesion,peregrino_form ))# é o que está fallando
+
+
+sesion_resposta%>%read_html()%>%
+        html_node(" .compostelana-estadisticas-container ") %>%  ### conseguir estes selectores é un pouco complicado
+html_text()
+```
+
+Datos interesantes sobre o código:
+
+
+- para conseguir os selectores, na ventá de inspección de chrome vemos que o texto está no id "#compostelana-estadisticas-wrapper", é o máximo que me podo aproximar. Descargo o nodo completo e con "html_node" vexo que a información que necesito está no subselector "#compostelana-estadisticas-template"
+- a función httr::with_verbose() axúdanos a ver o que devolve rvest::submit_form()
+        con ela vemos que non está a devolver nada. Seguirei explorando coa librería httr e Rselenium
+        
+- Para usar Rselenium IDE necesítase Firefox < 55 polo que en ubuntu instálase con
+
+sudo add-apt-repository ppa:mozillateam/ppa
+sudo apt-get update
+sudo apt-get install firefox-esr
